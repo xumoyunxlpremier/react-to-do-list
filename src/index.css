@@ -1,0 +1,289 @@
+:root {
+    --neon: #00ff9d;
+    --purple: #00ff9d;
+    --red: #ff4d6d;
+    --blue: #4e9af1;
+    --light-bg: #f4f4f7;
+    --dark-bg: #090909;
+    --light-text: #111;
+    --dark-text: #fff;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    height: 100%;
+    width: 100%;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 120px;
+    gap: 20px;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Dark mode*/
+.page.dark {
+    background: radial-gradient(circle at center, #0f0f0f 0%, #000 100%);
+    color: var(--dark-text);
+}
+
+.page.light {
+    background: linear-gradient(135deg, #e4e7f0, #ffffff);
+    color: var(--light-text);
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+}
+
+.mode-toggle {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mode-toggle:hover {
+    transform: rotate(20deg);
+}
+
+/* Input */
+.input-row {
+    display: flex;
+    gap: 10px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--neon);
+    background: transparent;
+    color: inherit;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.input-row input:focus {
+    border-color: var(--purple);
+}
+
+.input-row button {
+    background: var(--neon);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: 600;
+    color: #111;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.input-row button:hover {
+    background: #00d47d;
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    width: 90%;
+    max-width: 500px;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+.page.light li {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+li:hover {
+    transform: scale(1.02);
+}
+
+li span {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btns {
+    display: flex;
+    gap: 6px;
+}
+
+.btns button {
+    border: none;
+    border-radius: 8px;
+    padding: 6px 8px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s;
+}
+
+.btns button:hover {
+    transform: scale(1.15);
+}
+
+.btns button:nth-child(1) {
+    background: var(--blue);
+}
+
+.btns button:nth-child(2) {
+    background: var(--red);
+}
+
+.btns button:nth-child(3) {
+    background: var(--purple);
+}
+
+.btns button:nth-child(4) {
+    background: var(--purple);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.modal {
+    background: var(--light-bg);
+    color: var(--light-text);
+    padding: 25px 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+    animation: pop 0.25s ease-out;
+}
+
+.page.dark .modal {
+    background: #1a1a1a;
+    color: var(--dark-text);
+    box-shadow: 0 0 25px rgba(0, 255, 157, 0.4);
+}
+
+.modal p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.modal-buttons button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.modal-buttons button:first-child {
+    background: var(--red);
+    color: #fff;
+}
+
+.modal-buttons button:first-child:hover {
+    background: #e83b5f;
+}
+
+.modal-buttons button:last-child {
+    background: var(--neon);
+    color: #111;
+}
+
+.modal-buttons button:last-child:hover {
+    background: #00d47d;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 320px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .input-row {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .input-row button {
+        width: 100%;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btns {
+        margin-top: 6px;
+    }
+
+    .modal {
+        width: 90%;
+        padding: 20px;
+    }
+}
