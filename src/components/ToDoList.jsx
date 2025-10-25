@@ -44,13 +44,14 @@ function ToDoList() {
 
     return (
         <div className={`page ${darkMode ? "dark" : "light"}`}>
+            {/* Header */}
             <header>
                 <h1>To-Do List</h1>
                 <button className="mode-toggle" onClick={toggleMode}>
                     {darkMode ? <SunIcon /> : <MoonIcon />}
                 </button>
             </header>
-
+            {/* inputs */}
             <div className="input-row">
                 <input
                     type="text"
